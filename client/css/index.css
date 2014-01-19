@@ -1,0 +1,14 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+
+.todoInput {
+	width: 90%;
+}
+
+.done-true {
+	color:green;
+	text-decoration: line-through;
+}

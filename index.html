@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Livebase: Realtime Angular todo app with MongoDB</title>
+	<link rel="stylesheet" href="client/libs/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="client/css/index.css">
+	<script src="client/libs/angular/angular.min.js"></script>
+	<style>
+		.done-true {
+		  text-decoration: line-through;
+		  color: grey;
+		}
+		h1 {
+			font-size:28px;
+		}
+		h2 {
+			font-size:25px;
+		}
+	</style>
+</head>
+<body ng-app="TodoApp">
+
+	<div class="container-fluid" ng-controller="TodoCtrl">
+	  <h1>Todos with Livebase</h1>
+	  <h2>Realtime AngularJS todo list app with NodeJS, SocketIO and MongoDB</h2>
+	  <hr/>
+	  <div class="row-fluid">
+		<div class="span12">
+			<p>
+				<form ng-submit="addTodo()">
+					<div class="input-append" style="width:100%">
+						<input type="text" ng-model="todoInput" placeholder="What do you wanna do?"  class="todoInput" required></input>
+						<button class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</button>
+					</div>
+				</form>
+			</p>
+			
+			<ul class="unstyled">
+				<li ng-repeat="todo in todos" class="lead">
+				
+				<div class="control-group">
+					<div class="controls">
+						<label class="checkbox">
+							<input type="checkbox" ng-model="todo.done" ng-change="changeTodo($index)"></input>
+							<span class="done-{{todo.done}}">{{todo.text}}</span>
+							<a href="#" ng-click="deleteTodo($index)"> <i class="icon-minus-sign"></i></a>
+						</label>
+					</div>
+				</div>
+				</li>
+			</ul>
+		</div>
+	  </div>
+	</div>
+
+	<!-- libs -->
+	<script src="client/libs/socket.io/socket.io.min.js"></script>
+	<script src="client/libs/underscore-min.js"></script>
+	
+	<!-- libs too -->	
+	<script src="client/js/livebase.js"></script>
+	<script src="client/js/livebase-angular.js"></script>
+	
+	<!-- app script/controller -->
+	<script src="client/js/todos.js"></script>
+
+</body>
+</html>
+
